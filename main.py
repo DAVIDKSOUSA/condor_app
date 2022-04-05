@@ -23,7 +23,7 @@ st.markdown(hide_menu_style, unsafe_allow_html=True)
 #st.set_page_config(page_title="Bug report", page_icon="🐞", layout="centered")
 # site com icones: https://icons.getbootstrap.com
 pagina = option_menu(
-        "Inicio", ["Avisos", 'Relprev', 'QTS', 'Documentos', 'Formulários', 'Faltas', 'Diversos'],
+        "CONDOR APP", ["Avisos", 'Relprev', 'QTS', 'Documentos', 'Formulários', 'Faltas', 'Diversos'],
         icons=['pin', 'cast', 'table', 'cloud-download', 'list-task', 'person-check'],
     menu_icon="house",
     default_index=0,
