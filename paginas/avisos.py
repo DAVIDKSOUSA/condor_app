@@ -2,18 +2,18 @@
 import streamlit as st
 
 from streamlit_lottie import st_lottie
-import requests
+#import requests
 
-#animacao
-def load_lottieurl(url):
-    r = requests.get(url)
-    if r.status_code !=200:
-        return None
-    return r.json()
-lottie_coding = load_lottieurl('https://assets3.lottiefiles.com/packages/lf20_hu7gcd3w.json')
-
-#chamada da pagina
-def avisos():
+##animacao
+#def load_lottieurl(url):
+#    r = requests.get(url)
+#    if r.status_code !=200:
+#        return None
+#    return r.json()
+#lottie_coding = load_lottieurl('https://assets3.lottiefiles.com/packages/lf20_hu7gcd3w.json')
+#
+##chamada da pagina
+#def avisos():
 #    #st.set_page_config(
 #    #    page_title="Chef Transformer",
 #    #    page_icon="🍲",
