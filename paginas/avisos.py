@@ -13,7 +13,7 @@ from streamlit_lottie import st_lottie
 #lottie_coding = load_lottieurl('https://assets3.lottiefiles.com/packages/lf20_hu7gcd3w.json')
 #
 ##chamada da pagina
-#def avisos():
+def avisos():
 #    #st.set_page_config(
 #    #    page_title="Chef Transformer",
 #    #    page_icon="🍲",

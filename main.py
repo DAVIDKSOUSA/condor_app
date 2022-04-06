@@ -37,8 +37,8 @@ pagina = option_menu(
 if pagina == 'Início':
     ic.inicio()
 
-if pagina == 'Avisos':
-    av.avisos()
+#if pagina == 'Avisos':
+#    av.avisos()
 
 if pagina == 'QTS':
     qts.qts()
