@@ -4,7 +4,7 @@ from streamlit_option_menu import option_menu
 
 #importar paginas
 import paginas.inicio as ic
-import paginas.avisos as av
+#import paginas.avisos as av
 import paginas.qts as qts
 import paginas.relprev as rp
 import paginas.faltas as ft
