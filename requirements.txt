@@ -1,0 +1,7 @@
+3==0.0.0
+google-api-python-client==2.42.0
+google-auth-oauthlib==0.5.1
+gsheetsdb==0.1.13.1
+pip-chill==1.0.1
+streamlit-lottie==0.0.3
+streamlit-option-menu==0.3.2
