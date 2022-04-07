@@ -17,7 +17,7 @@ import paginas.indisp as id
 #    footer {visibility: hidden;}
 #    </style>
 #    """
-st.markdown(hide_menu_style, unsafe_allow_html=True)
+#st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 #pagina com navegation bar
 #st.set_page_config(page_title="Bug report", page_icon="🐞", layout="centered")
