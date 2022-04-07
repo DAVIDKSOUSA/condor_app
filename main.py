@@ -10,13 +10,13 @@ import paginas.relprev as rp
 import paginas.faltas as ft
 import paginas.indisp as id
 
-#ocultar o menu
-hide_menu_style = """
-    <style>
-    #MainMenu {visibility: hidden; }
-    footer {visibility: hidden;}
-    </style>
-    """
+##ocultar o menu
+#hide_menu_style = """
+#    <style>
+#    #MainMenu {visibility: hidden; }
+#    footer {visibility: hidden;}
+#    </style>
+#    """
 st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 #pagina com navegation bar
