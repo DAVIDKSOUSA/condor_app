@@ -19,9 +19,9 @@ def avisos():
     #    layout="wide",
     #    initial_sidebar_state="expanded"
     #)
-    # st.image('/Users/davidsousa/Prophet/Capa_Home.png', use_column_width='always')
+
     st.write('---')
-    st.markdown("<h3 style='text-align: center; color:blue; font-size:50px;'><b>ESQUADRÃO CONDOR<b></h3>",
+    st.markdown("<h3 style='text-align: center; color:#003366; font-size:60px;'><b>ESQUADRÃO CONDOR<b></h3>",
                 unsafe_allow_html=True)
     st.write('---')
     st.text('')
