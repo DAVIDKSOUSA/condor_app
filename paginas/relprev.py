@@ -22,8 +22,6 @@ def relprev():
     #     orientation='vertical'
     # )
 
-
-
     SCOPE = "https://www.googleapis.com/auth/spreadsheets"
     SPREADSHEET_ID = '1Q9A-rSoxYxNRL4smyyaFnNWlRX9Mvp3RmxEhHiipEd8'
     SHEET_NAME = "relprev"
@@ -82,52 +80,49 @@ def relprev():
         ).execute()
 
     # st.set_page_config(page_title="Bug report", page_icon="🐞", layout="centered")
-    st.header("Registro de Prevenção")
+    st.markdown("<h1 style='text-align:center ; color:red; font-size:30px;'><b>RELPREV - Relato de Prevenção<b></h1>",
+                        unsafe_allow_html=True)
+    st.markdown("<h2 style='text-align:center ; color:black; font-size:15px;'><b>Sua atitude pode salvar vidas!<b></h2>",
+                unsafe_allow_html=True)
 
     gsheet_connector = connect_to_gsheet()
 
     # texto sidebar
+    st.sidebar.markdown("<h1 style='text-align:center ; color:red; font-size:30px;'><b>ATENÇÃO !<b></h1>",
+                        unsafe_allow_html=True)
     st.sidebar.write(
-        f"Esta página é permitida somente para o efetivo da Seção de Apoio do 1/2GT, somente usuários com e-mail \n"
-        f"cadastrados podem modificar a [Planilha de Retirada de Faltas]({GSHEET_URL})."
-    )
-    st.sidebar.write(
-        "Cadastrar texto Ricardo/Whatsapp.\n"
+        "É vedado o uso do RELPREV para o trato de assuntos caracterizados como DENÚNCIA,  tais como, violações intencionais da regulamentação em vigor, contravenções penais ou crimes relacionados à atividade aérea.")
+    st.sidebar.markdown("<h3 style='text-align:center ; color:black; font-size:30px;'><b>Aviso<b></h3>",
+                unsafe_allow_html=True)
+    st.sidebar.write("1. O RELPREV destina-se, tão somente, ao registro das circunstâncias que constituam ou possam vir a constituir uma situação com potencial de risco à atividade aérea, com o objetivo exclusivo de prevenir ocorrências aeronáuticas.")
+    st.sidebar.write("2. O RELPREV está baseado nos princípios da voluntariedade, sigilo e não punibilidade.")
+    st.sidebar.write("3. De acordo com as regulamentações brasileiras, este relato (ou parte dele) somente será usado para a prevenção de acidentes aeronáuticos, a fim de aumentar a segurança operacional. Este relato não precisa ser identificado. Caso o relator se identifique, o mesmo será informado sobre as medidas adotadas.")
 
-    )
-    st.sidebar.write(
-        "Att, Ten David"
-    )
+    st.sidebar.write("Cadastrar Ricardo/Whatsapp.")
 
     form = st.form(key="annotation")
 
     with form:
-        #st.title('Ten David')
-        # cols = st.columns((1, 1))
-        # author = cols[0].text_input("Ten David")
-        st.subheader('Relato')
+        st.subheader('DADOS GERAIS DA OCORRÊNCIA')
         comment = st.text_area("Local")
-        #cols = st.columns(2)
-        data = st.date_input("Data")
-        time = st.time_input("Horário")
-        timeutc = st.time_input("Horário - UTC")
+        cols = st.columns(3)
+        data = cols[0].date_input("Data")
+        time = cols[1].time_input("Horário")
+        timeutc = cols[2].time_input("Horário - UTC")
         pessoal = st.text_area("Pessoal envolvido e/ou aeronave")
         situacao = st.text_area("Situação")
-        st.subheader('Identificação')
-        posto = st.selectbox('Posto/Graduação', ['', 'Brig', 'Cel', 'Ten Cel', 'Maj', 'Cap', 'Ten', 'SO', '1S', '2S', '3S', 'CB', 'TF', 'SD'])
-        email = st.text_area("E-mail")
-        telefone = st.text_area("Telefone")
-        secao = st.text_area("Seção")
-        tipo = st.selectbox('Tipo de Relator', ['', 'Tripulante', 'Manutenção', 'ATS', 'Pessoal de Apoio ao Solo', 'Anônimo'])
-
+        st.subheader('IDENTIFICAÇÃO')
+        cols = st.columns(3)
+        nome = cols[0].text_area("Nome")
+        posto = cols[1].selectbox('Posto/Graduação', ['', 'Brig', 'Cel', 'Ten Cel', 'Maj', 'Cap', 'Ten', 'SO', '1S', '2S', '3S', 'CB', 'TF', 'SD'])
+        tipo = cols[2].selectbox('Tipo de Relator', ['', 'Tripulante', 'Manutenção', 'ATS', 'Pessoal de Apoio ao Solo', 'Anônimo'])
+        cols = st.columns(3)
+        email = cols[0].text_area("E-mail")
+        telefone = cols[1].text_area("Telefone")
+        secao = cols[2].text_area("Seção")
         feedback = st.radio("Deseja Receber Feedback", ['Sim', 'Não'])
 
-
-
-
-
-        submitted = st.form_submit_button(label="Registrar")
-
+        submitted = st.form_submit_button(label="Salvar e enviar Relprev")
 
     if submitted:
         add_row_to_gsheet(
