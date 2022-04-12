@@ -24,12 +24,12 @@ def avisos():
     st.write('---')
     coluns = st.columns(2)
     image = Image.open('images/bolacha.png')
-    coluns[0].image(image, width=300)
-    coluns[1].markdown("<h1 style='text-align:center ; color:grey; font-size:20px;'><b>1º/2º GT - Primeiro Esquadrão do Segundo Grupo de Transporte<b></h1>",
+    st.image(image, width=300)
+    st.markdown("<h1 style='text-align:center ; color:grey; font-size:20px;'><b>1º/2º GT - Primeiro Esquadrão do Segundo Grupo de Transporte<b></h1>",
                 unsafe_allow_html=True)
-    coluns[1].markdown("<h1 style='text-align:center ; color:grey; font-size:18px;'><b>Missão<b></h1>",
+    st.markdown("<h1 style='text-align:center ; color:grey; font-size:18px;'><b>Missão<b></h1>",
                 unsafe_allow_html=True)
-    coluns[1].write('Manter o efetivo preparado para empregar seus meios aéreos com SEGURANÇA, EFICIENCIA e EFICÁCIA.')
+    st.write('Manter o efetivo preparado para empregar seus meios aéreos com SEGURANÇA, EFICIENCIA e EFICÁCIA.')
     st.write('---')
     #st.text('')
     #st.markdown("<h1 style='text-align: center; color:grey; font-size:23px;'><b>Faça uma análise completa da sua "
