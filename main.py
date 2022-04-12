@@ -9,6 +9,16 @@ import paginas.relprev as rp
 import paginas.faltas as ft
 import paginas.indisp as id
 
+st.set_page_config(page_title="Aplicativo Esquadrão Condor",
+                   page_icon='🛩',
+                   layout="wide",
+                   initial_sidebar_state="expanded",
+                   menu_items={'Get help': None,
+                               "Report a Bug": None,
+                               "About": None
+                                }
+                   )
+                   #🛩
 #ocultar o menu
 hide_menu_style = """
     <style>
