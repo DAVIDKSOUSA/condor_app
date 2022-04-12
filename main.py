@@ -3,7 +3,6 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 
 #importar paginas
-import paginas.inicio as ic
 import paginas.avisos as av
 import paginas.qts as qts
 import paginas.relprev as rp
@@ -23,7 +22,7 @@ st.markdown(hide_menu_style, unsafe_allow_html=True)
 #st.set_page_config(page_title="Bug report", page_icon="🐞", layout="centered")
 # site com icones: https://icons.getbootstrap.com
 pagina = option_menu(
-        "CONDOR APP", ["Avisos", 'Relprev', 'QTS', 'Formulários', 'Faltas', 'Documentos'],
+        "ESQUADRÃO CONDOR", ["Avisos", 'Relprev', 'QTS', 'Formulários', 'Faltas', 'Documentos'],
         icons=['pin', 'cast', 'table', 'list-task', 'person-check', 'cloud-download', ],
     menu_icon="house",
     default_index=0,
@@ -33,9 +32,6 @@ pagina = option_menu(
     #default_index=0,
     orientation='horizontal'
 )
-
-if pagina == 'Início':
-    ic.inicio()
 
 if pagina == 'Avisos':
     av.avisos()

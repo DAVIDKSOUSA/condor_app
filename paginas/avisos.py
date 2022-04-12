@@ -1,6 +1,7 @@
 #importar bibliotecas
 import streamlit as st
 from streamlit_lottie import st_lottie
+from PIL import Image
 import requests
 
 ##animacao
@@ -21,8 +22,14 @@ def avisos():
     #)
 
     st.write('---')
-    st.markdown("<h3 style='text-align: center; color:#003366; font-size:60px;'><b>ESQUADRÃO CONDOR<b></h3>",
+    coluns = st.columns(2)
+    image = Image.open('images/bolacha.png')
+    coluns[0].image(image, width=200)
+    coluns[1].markdown("<h1 style='text-align:left ; color:black; font-size:15px;'><b>Primeiro Esquadrão do Segundo Grupo de Transporte<b></h1>",
                 unsafe_allow_html=True)
+    coluns[1].markdown("<h1 style='text-align:center ; color:black; font-size:15px;'><b>Missão<b></h1>",
+                unsafe_allow_html=True)
+    coluns[1].write('Manter o efetivo preparado para empregar seus meios aéreos com SEGURANÇA, EFICIENCIA e EFICÁCIA.')
     st.write('---')
     st.text('')
     st.markdown("<h1 style='text-align: center; color:grey; font-size:23px;'><b>Faça uma análise completa da sua "
@@ -32,14 +39,10 @@ def avisos():
                 unsafe_allow_html=True)
     st.text('')
     st.write(
-        'O processo de alocação patrimonial, apesar de ser simples não é fácil. Devido à quantidade exarcebada de infor'
-        'mações que temos, muitas vezes, o investidor fica na dúvida em relação à composição da sua '
-        'carteira de investimentos. Neste contexto '
-        'o SMART PORTFOLIO '
-        'foi concebido com a intenção de auxiliar no processo de alocação patrimonial. O aplicativo não irá te mostrar '
-        'em qual classe de ativo financeiro investir, contudo uma vez definida a classe de ativo será possível '
-        'identificar uma alocação eficiente, '
-        'onde pode-se esperar um menor risco (volatilidade), para um maior retorno.'
+        'ALTIVO E GLORIOSO\n'
+        'VOAMOS COM LOUVOR\n'
+        'SEGURO E EFICIENTE\n'
+        'NAS ASAS DO CONDOR.'
     )
     st.write('---')
     st.write(':point_left: Use o menu ao lado e selecione uma funcionalidade.')
@@ -50,18 +53,13 @@ def avisos():
             def p_title(title):
                 st.markdown(f'<h3 style="text-align: left; color:#F63366; font-size:28px;">{title}</h3>',
                             unsafe_allow_html=True)
-
+            p_title('AVISO')
             st.text('')
-            p_title('Qual objetivo do SMART PORTFOLIO ?')
-            st.text('')
-            st.write(
-                'Realizar a analise de ativos financeiros e o comportamento de um portifólio de investimentos através de '
-                'análise de dados.'
+            st.write('INSERIR AVISO'
             )
-            p_title('Quem deve utilizar o SMART PORTFOLIO ?')
+            p_title('AVISOS')
             st.write(
-                'Investidores que querem realizar uma análise independente da sua carteira de investimentos ou algum ativo'
-                ' específico'
+                'INSERIR AVISO'
             )
             st.write('##')
             st.write(
