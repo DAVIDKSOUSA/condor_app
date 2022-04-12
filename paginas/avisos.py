@@ -24,7 +24,7 @@ def avisos():
     st.write('---')
     coluns = st.columns(2)
     image = Image.open('images/bolacha.png')
-    coluns[0].image(image, width=200)
+    coluns[0].image(image, width=300)
     coluns[1].markdown("<h1 style='text-align:center ; color:grey; font-size:20px;'><b>1º/2º GT - Primeiro Esquadrão do Segundo Grupo de Transporte<b></h1>",
                 unsafe_allow_html=True)
     coluns[1].markdown("<h1 style='text-align:center ; color:grey; font-size:18px;'><b>Missão<b></h1>",
