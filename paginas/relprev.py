@@ -82,7 +82,7 @@ def relprev():
     # st.set_page_config(page_title="Bug report", page_icon="🐞", layout="centered")
     st.markdown("<h1 style='text-align:center ; color:red; font-size:30px;'><b>RELPREV - Relato de Prevenção<b></h1>",
                         unsafe_allow_html=True)
-    st.markdown("<h2 style='text-align:center ; color:black; font-size:15px;'><b>Sua atitude pode salvar vidas!<b></h2>",
+    st.markdown("<h2 style='text-align:center ; color:grey; font-size:15px;'><b>Sua atitude pode salvar vidas!<b></h2>",
                 unsafe_allow_html=True)
 
     gsheet_connector = connect_to_gsheet()
@@ -92,7 +92,7 @@ def relprev():
                         unsafe_allow_html=True)
     st.sidebar.write(
         "É vedado o uso do RELPREV para o trato de assuntos caracterizados como DENÚNCIA,  tais como, violações intencionais da regulamentação em vigor, contravenções penais ou crimes relacionados à atividade aérea.")
-    st.sidebar.markdown("<h3 style='text-align:center ; color:black; font-size:30px;'><b>Avisos<b></h3>",
+    st.sidebar.markdown("<h3 style='text-align:center ; color:grey; font-size:30px;'><b>Avisos<b></h3>",
                 unsafe_allow_html=True)
     st.sidebar.write("1. O RELPREV destina-se, tão somente, ao registro das circunstâncias que constituam ou possam vir a constituir uma situação com potencial de risco à atividade aérea, com o objetivo exclusivo de prevenir ocorrências aeronáuticas.")
     st.sidebar.write("2. O RELPREV está baseado nos princípios da voluntariedade, sigilo e não punibilidade.")

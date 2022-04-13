@@ -32,7 +32,7 @@ def indisp():
     if pagina == 'Indisponibilidade Mensal':
         SCOPE = "https://www.googleapis.com/auth/spreadsheets"
         SPREADSHEET_ID = '1Q9A-rSoxYxNRL4smyyaFnNWlRX9Mvp3RmxEhHiipEd8'
-        SHEET_NAME = "indisponibilidade"
+        SHEET_NAME = "mensal"
         GSHEET_URL = f"https://docs.google.com/spreadsheets/d/{SPREADSHEET_ID}"
 
         @st.experimental_singleton(suppress_st_warning=True)
@@ -67,7 +67,7 @@ def indisp():
                 gsheet_connector.values()
                     .get(
                     spreadsheetId=SPREADSHEET_ID,
-                    range=f"{SHEET_NAME}!A:D",
+                    range=f"{SHEET_NAME}!A:E",
                 )
                     .execute()
             )
@@ -80,7 +80,7 @@ def indisp():
         def add_row_to_gsheet(gsheet_connector, row) -> None:
             gsheet_connector.values().append(
                 spreadsheetId=SPREADSHEET_ID,
-                range=f"{SHEET_NAME}!A:D",
+                range=f"{SHEET_NAME}!A:E",
                 body=dict(values=row),
                 valueInputOption="USER_ENTERED",
             ).execute()
@@ -120,7 +120,7 @@ def indisp():
     if pagina == 'CML':
         SCOPE = "https://www.googleapis.com/auth/spreadsheets"
         SPREADSHEET_ID = '1Q9A-rSoxYxNRL4smyyaFnNWlRX9Mvp3RmxEhHiipEd8'
-        SHEET_NAME = "indisponibilidade"
+        SHEET_NAME = "cml"
         GSHEET_URL = f"https://docs.google.com/spreadsheets/d/{SPREADSHEET_ID}"
 
         @st.experimental_singleton(suppress_st_warning=True)
@@ -155,7 +155,7 @@ def indisp():
                 gsheet_connector.values()
                     .get(
                     spreadsheetId=SPREADSHEET_ID,
-                    range=f"{SHEET_NAME}!A:D",
+                    range=f"{SHEET_NAME}!A:E",
                 )
                     .execute()
             )
@@ -168,7 +168,7 @@ def indisp():
         def add_row_to_gsheet(gsheet_connector, row) -> None:
             gsheet_connector.values().append(
                 spreadsheetId=SPREADSHEET_ID,
-                range=f"{SHEET_NAME}!A:D",
+                range=f"{SHEET_NAME}!A:E",
                 body=dict(values=row),
                 valueInputOption="USER_ENTERED",
             ).execute()
@@ -192,7 +192,7 @@ def indisp():
         if submitted:
             add_row_to_gsheet(
                 gsheet_connector,
-                [[str(author), str(dias), str(saram), str(date1), str(date2)]],
+                [[str(author), str(saram), str(date1), str(date2), str(dias)]],
             )
             st.success("Registro realizado.")
             st.balloons()

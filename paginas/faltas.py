@@ -68,7 +68,7 @@ def faltas():
                 gsheet_connector.values()
                     .get(
                     spreadsheetId=SPREADSHEET_ID,
-                    range=f"{SHEET_NAME}!A:D",
+                    range=f"{SHEET_NAME}!A:E",
                 )
                     .execute()
             )
@@ -81,7 +81,7 @@ def faltas():
         def add_row_to_gsheet(gsheet_connector, row) -> None:
             gsheet_connector.values().append(
                 spreadsheetId=SPREADSHEET_ID,
-                range=f"{SHEET_NAME}!A:D",
+                range=f"{SHEET_NAME}!A:E",
                 body=dict(values=row),
                 valueInputOption="USER_ENTERED",
             ).execute()
@@ -98,7 +98,7 @@ def faltas():
             # author = cols[0].text_input("Ten David")
             cols = st.columns(3)
             nome = cols[0].selectbox('Nome',
-                                 ['','Ten Cel Davidson', 'Ten Filgueiras'])
+                                 ['','TC DAVIDSON','MJ ROELES','CP DALLA CORTE','CP RAFAEL','CP ROBERTHA','CP THAIS LEMGRUBER','CP MOREIRA','CP RICARDO','CP RODNEI','CP BLUMER','CP FIALHO','CP ALENCAR','TEN DAVID','TEN FILGUEIRAS','TEN ANCHIETA','TEN LUIZ CLÁUDIO','TEN GABRIEL','TEN MOURA'])
 
             motivo = cols[1].radio(
                 "Motivo:", ["Presente", "Voo", "Sobreaviso", "Dispensado", "Férias", "Outro"], index=0
@@ -124,7 +124,7 @@ def faltas():
     if pagina == 'Graduados':
         SCOPE = "https://www.googleapis.com/auth/spreadsheets"
         SPREADSHEET_ID = '1Q9A-rSoxYxNRL4smyyaFnNWlRX9Mvp3RmxEhHiipEd8'
-        SHEET_NAME = "oficiais"
+        SHEET_NAME = "graduados"
         GSHEET_URL = f"https://docs.google.com/spreadsheets/d/{SPREADSHEET_ID}"
 
         @st.experimental_singleton(suppress_st_warning=True)
@@ -159,7 +159,7 @@ def faltas():
                 gsheet_connector.values()
                     .get(
                     spreadsheetId=SPREADSHEET_ID,
-                    range=f"{SHEET_NAME}!A:D",
+                    range=f"{SHEET_NAME}!A:E",
                 )
                     .execute()
             )
@@ -172,7 +172,7 @@ def faltas():
         def add_row_to_gsheet(gsheet_connector, row) -> None:
             gsheet_connector.values().append(
                 spreadsheetId=SPREADSHEET_ID,
-                range=f"{SHEET_NAME}!A:D",
+                range=f"{SHEET_NAME}!A:E",
                 body=dict(values=row),
                 valueInputOption="USER_ENTERED",
             ).execute()
@@ -189,7 +189,7 @@ def faltas():
             # author = cols[0].text_input("Ten David")
             cols = st.columns(3)
             nome = cols[0].selectbox('Nome',
-                                 ['','Carvalho', 'Luiz Alberto'])
+                                 ['','SO CAIO','1S MEIRELES','1S LUIZ ALBERTO','1S FAUSTINO','1S RONILSON','2S CASTANHEIRA','2S CARVALHO','2S AZEVEDO','2S WOLBERTH','3S ESTEVES'])
 
             motivo = cols[1].radio(
                 "Motivo:", ["Presente", "Voo", "Sobreaviso", "Dispensado", "Férias", "Outro"], index=0
@@ -215,7 +215,7 @@ def faltas():
     if pagina == 'Praças':
         SCOPE = "https://www.googleapis.com/auth/spreadsheets"
         SPREADSHEET_ID = '1Q9A-rSoxYxNRL4smyyaFnNWlRX9Mvp3RmxEhHiipEd8'
-        SHEET_NAME = "oficiais"
+        SHEET_NAME = "pracas"
         GSHEET_URL = f"https://docs.google.com/spreadsheets/d/{SPREADSHEET_ID}"
 
         @st.experimental_singleton(suppress_st_warning=True)
@@ -250,7 +250,7 @@ def faltas():
                 gsheet_connector.values()
                     .get(
                     spreadsheetId=SPREADSHEET_ID,
-                    range=f"{SHEET_NAME}!A:D",
+                    range=f"{SHEET_NAME}!A:E",
                 )
                     .execute()
             )
@@ -263,7 +263,7 @@ def faltas():
         def add_row_to_gsheet(gsheet_connector, row) -> None:
             gsheet_connector.values().append(
                 spreadsheetId=SPREADSHEET_ID,
-                range=f"{SHEET_NAME}!A:D",
+                range=f"{SHEET_NAME}!A:E",
                 body=dict(values=row),
                 valueInputOption="USER_ENTERED",
             ).execute()
@@ -280,7 +280,7 @@ def faltas():
             # author = cols[0].text_input("Ten David")
             cols = st.columns(3)
             nome = cols[0].selectbox('Nome',
-                                     ['', 'Lucena', 'Siqueira'])
+                                     ['', 'S1 LUCENA','S1 R. VASCONCELOS','S1 A. CARVALHO','S1 L. SIQUEIRA','S2 VALENTINO','S2 ARANHA','S2 LUAN SOARES'])
 
             motivo = cols[1].radio(
                 "Motivo:", ["Presente", "Voo", "Sobreaviso", "Dispensado", "Férias", "Outro"], index=0
