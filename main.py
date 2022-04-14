@@ -8,6 +8,7 @@ import paginas.qts as qts
 import paginas.relprev as rp
 import paginas.faltas as ft
 import paginas.indisp as id
+import paginas.documentos as dc
 
 st.set_page_config(page_title="Aplicativo Esquadrão Condor",
                    page_icon='🛩',
@@ -51,6 +52,9 @@ if pagina == 'Relprev':
 
 if pagina == 'Formulários':
     id.indisp()
+
+if pagina == 'Documentos':
+    dc.documentos()
 
 
 
