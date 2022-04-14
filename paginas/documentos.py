@@ -5,8 +5,8 @@ from streamlit_option_menu import option_menu
 #definir pagina
 def documentos():
     pagina = option_menu(
-        menu_title="Dowloads",
-        options=['Aulas', 'Manuais', 'MAPIL/STUDY GUIDE', 'OI C-99'],
+        menu_title="Downloads",
+        options=['Aulas','OI C-99'],
         menu_icon='person',
         default_index=0,
         orientation='vertical'
@@ -31,3 +31,16 @@ def documentos():
                            data=PDFbyte,
                            file_name="2 APU.ppt",
                            mime='application/octet-stream')
+        st.write('...')
+
+    if pagina == 'OI C-99':
+        st.header('Aulas Ground')
+
+        with open("aulas/OI C99 compilada.pdf", "rb") as pdf_file:
+            PDFbyte = pdf_file.read()
+
+        st.download_button(label="OI C99 compilada",
+                           data=PDFbyte,
+                           file_name="OI C99 compilada.pdf",
+                           mime='application/octet-stream')
+
