@@ -58,9 +58,9 @@ def avisos():
             st.write('INSERIR AVISO'
             )
             p_title('AVISOS:')
-            st.write(
-                'INSERIR AVISO'
-            )
+            #st.write(
+            #    'INSERIR AVISO'
+            #)
             st.write('##')
             st.write('Mídias Sociais (não oficial) :')
             st.markdown(
