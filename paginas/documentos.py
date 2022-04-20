@@ -3,6 +3,8 @@ import streamlit as st
 from streamlit_option_menu import option_menu
 
 #definir pagina
+
+#https://towardsdatascience.com/display-and-download-pdf-in-streamlit-a-blog-use-case-5fc1ac87d4b1
 def documentos():
     pagina = option_menu(
         menu_title="Downloads",

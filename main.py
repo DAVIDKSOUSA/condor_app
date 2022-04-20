@@ -13,7 +13,7 @@ import paginas.documentos as dc
 st.set_page_config(page_title="Aplicativo Esquadrão Condor",
                    page_icon='🛩',
                    layout="wide",
-                   initial_sidebar_state="expanded",
+                   initial_sidebar_state="auto",
                    menu_items={'Get help': None,
                                "Report a Bug": None,
                                "About": None
