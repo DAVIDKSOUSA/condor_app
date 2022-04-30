@@ -36,7 +36,7 @@ def documentos():
         st.write('...')
 
     if pagina == 'OI C-99':
-        st.header('Aulas Ground')
+        st.header('OI C-99')
 
         with open("aulas/OI C99 compilada.pdf", "rb") as pdf_file:
             PDFbyte = pdf_file.read()

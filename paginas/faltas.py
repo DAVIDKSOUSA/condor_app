@@ -68,8 +68,9 @@ def faltas():
                 return True
 
         if check_password():
-            st.write("Autenticação realizada com sucesso")
             #st.button("Entrar")
+            st.write("Autenticação realizada com sucesso")
+
 
             SCOPE = "https://www.googleapis.com/auth/spreadsheets"
             SPREADSHEET_ID = '1Q9A-rSoxYxNRL4smyyaFnNWlRX9Mvp3RmxEhHiipEd8'

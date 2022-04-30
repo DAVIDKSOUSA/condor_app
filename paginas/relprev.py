@@ -9,18 +9,24 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import HttpRequest
 
-from streamlit_option_menu import option_menu
 #chamada da pagina
 
 def relprev():
 
-    # pagina = option_menu(
-    #     menu_title="Formulários",
-    #     options=['Mensal', 'CML'],
-    #     menu_icon='cast',
-    #     default_index=0,
-    #     orientation='vertical'
-    # )
+    # texto sidebar
+    st.sidebar.markdown("<h1 style='text-align:center ; color:red; font-size:30px;'><b>ATENÇÃO !<b></h1>",
+                        unsafe_allow_html=True)
+    st.sidebar.write(
+        "É vedado o uso do RELPREV para o trato de assuntos caracterizados como DENÚNCIA,  tais como, violações intencionais da regulamentação em vigor, contravenções penais ou crimes relacionados à atividade aérea.")
+    st.sidebar.markdown("<h3 style='text-align:center ; color:grey; font-size:30px;'><b>Avisos<b></h3>",
+                        unsafe_allow_html=True)
+    st.sidebar.write(
+        "1. O RELPREV destina-se, tão somente, ao registro das circunstâncias que constituam ou possam vir a constituir uma situação com potencial de risco à atividade aérea, com o objetivo exclusivo de prevenir ocorrências aeronáuticas.")
+    st.sidebar.write("2. O RELPREV está baseado nos princípios da voluntariedade, sigilo e não punibilidade.")
+    st.sidebar.write(
+        "3. De acordo com as regulamentações brasileiras, este relato (ou parte dele) somente será usado para a prevenção de acidentes aeronáuticos, a fim de aumentar a segurança operacional. Este relato não precisa ser identificado. Caso o relator se identifique, o mesmo será informado sobre as medidas adotadas.")
+
+    st.sidebar.write("Cadastrar Ricardo/Whatsapp.")
 
     SCOPE = "https://www.googleapis.com/auth/spreadsheets"
     SPREADSHEET_ID = '1Q9A-rSoxYxNRL4smyyaFnNWlRX9Mvp3RmxEhHiipEd8'
@@ -54,8 +60,6 @@ def relprev():
         gsheet_connector = service.spreadsheets()
         return gsheet_connector
 
-    # Ten David
-
     def get_data(gsheet_connector) -> pd.DataFrame:
         values = (
             gsheet_connector.values()
@@ -79,26 +83,12 @@ def relprev():
             valueInputOption="USER_ENTERED",
         ).execute()
 
-    # st.set_page_config(page_title="Bug report", page_icon="🐞", layout="centered")
     st.markdown("<h1 style='text-align:center ; color:red; font-size:30px;'><b>RELPREV - Relato de Prevenção<b></h1>",
                         unsafe_allow_html=True)
     st.markdown("<h2 style='text-align:center ; color:grey; font-size:15px;'><b>Sua atitude pode salvar vidas!<b></h2>",
                 unsafe_allow_html=True)
 
     gsheet_connector = connect_to_gsheet()
-
-    # texto sidebar
-    st.sidebar.markdown("<h1 style='text-align:center ; color:red; font-size:30px;'><b>ATENÇÃO !<b></h1>",
-                        unsafe_allow_html=True)
-    st.sidebar.write(
-        "É vedado o uso do RELPREV para o trato de assuntos caracterizados como DENÚNCIA,  tais como, violações intencionais da regulamentação em vigor, contravenções penais ou crimes relacionados à atividade aérea.")
-    st.sidebar.markdown("<h3 style='text-align:center ; color:grey; font-size:30px;'><b>Avisos<b></h3>",
-                unsafe_allow_html=True)
-    st.sidebar.write("1. O RELPREV destina-se, tão somente, ao registro das circunstâncias que constituam ou possam vir a constituir uma situação com potencial de risco à atividade aérea, com o objetivo exclusivo de prevenir ocorrências aeronáuticas.")
-    st.sidebar.write("2. O RELPREV está baseado nos princípios da voluntariedade, sigilo e não punibilidade.")
-    st.sidebar.write("3. De acordo com as regulamentações brasileiras, este relato (ou parte dele) somente será usado para a prevenção de acidentes aeronáuticos, a fim de aumentar a segurança operacional. Este relato não precisa ser identificado. Caso o relator se identifique, o mesmo será informado sobre as medidas adotadas.")
-
-    st.sidebar.write("Cadastrar Ricardo/Whatsapp.")
 
     form = st.form(key="annotation")
 

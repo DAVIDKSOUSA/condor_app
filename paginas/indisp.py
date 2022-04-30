@@ -98,7 +98,7 @@ def indisp():
             motivo = cols[0].radio(
                 "Motivo:", ["Férias", "Serviço", "Dispensa", "Curso", "Outro (descrever motivo)"], index=0
             )
-            cols[1].write("Data")
+            cols[1].write("Data  ( ANO/MÊS/DIA ):")
             date1 = cols[1].date_input("De:")
             date2 = cols[1].date_input("Até:")
             comment = st.text_area("Descrição:", height=100)
@@ -184,7 +184,7 @@ def indisp():
             cols = st.columns(2)
             saram = cols[0].text_area("SARAM:", height=100)
             dias = cols[0].slider(label= 'Quantidade de dias:', max_value=30 , min_value=1)
-            cols[1].write("Data")
+            cols[1].write("Data  ( ANO/MÊS/DIA ):")
             date1 = cols[1].date_input("De:")
             date2 = cols[1].date_input("Até:")
             submitted = st.form_submit_button(label="Salvar e Registrar")
