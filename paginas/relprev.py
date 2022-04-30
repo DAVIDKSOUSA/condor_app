@@ -96,7 +96,7 @@ def relprev():
         st.subheader('DADOS GERAIS DA OCORRÊNCIA')
         comment = st.text_area("Local:")
         cols = st.columns(3)
-        data = cols[0].date_input("Data:")
+        data = cols[0].date_input("Data (ANO/MÊS/DIA):")
         time = cols[1].time_input("Horário:")
         timeutc = cols[2].time_input("Horário - UTC:")
         pessoal = st.text_area("Pessoal envolvido e/ou aeronave:")

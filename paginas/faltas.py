@@ -68,7 +68,7 @@ def faltas():
                 return True
 
         if check_password():
-            #st.button("Entrar")
+            st.button("Entrar")
             st.write("Autenticação realizada com sucesso")
 
 
@@ -145,10 +145,11 @@ def faltas():
                                           'TEN LUIZ CLÁUDIO', 'TEN GABRIEL', 'TEN MOURA'])
 
                 motivo = cols[1].radio(
-                    "Motivo:", ["Presente", "Voo", "Sobreaviso", "Dispensado", "Férias", "Outro"], index=0
+                    "Motivo:", ["Presente", "Voo", "Sobreaviso", "Dispensado", "Férias", "Atrasado", "Outro"], index=0
                 )
                 date = cols[2].date_input("Data")
-                time = cols[2].time_input("Horário")
+                time = cols[2].radio(
+                    "Horário:", ["Dia", "Tarde", "Noite"], index=0)
                 comment = st.text_area("Comentários")
                 submitted = st.form_submit_button(label="Registrar")
 
@@ -278,10 +279,11 @@ def faltas():
                                           '2S CASTANHEIRA', '2S CARVALHO', '2S AZEVEDO', '2S WOLBERTH', '3S ESTEVES'])
 
                 motivo = cols[1].radio(
-                    "Motivo:", ["Presente", "Voo", "Sobreaviso", "Dispensado", "Férias", "Outro"], index=0
+                    "Motivo:", ["Presente", "Voo", "Sobreaviso", "Dispensado", "Férias", "Atrasado", "Outro"], index=0
                 )
                 date = cols[2].date_input("Data")
-                time = cols[2].time_input("Horário")
+                time = cols[2].radio(
+                    "Horário:", ["Dia", "Tarde", "Noite"], index=0)
                 comment = st.text_area("Comentários")
                 submitted = st.form_submit_button(label="Registrar")
 
@@ -411,10 +413,11 @@ def faltas():
                                           'S2 VALENTINO', 'S2 ARANHA', 'S2 LUAN SOARES'])
 
                 motivo = cols[1].radio(
-                    "Motivo:", ["Presente", "Voo", "Sobreaviso", "Dispensado", "Férias", "Outro"], index=0
+                    "Motivo:", ["Presente", "Voo", "Sobreaviso", "Dispensado", "Férias", "Atrasado", "Outro"], index=0
                 )
                 date = cols[2].date_input("Data")
-                time = cols[2].time_input("Horário")
+                time = cols[2].radio(
+                    "Horário:", ["Dia", "Tarde", "Noite"], index=0)
                 comment = st.text_area("Comentários")
                 submitted = st.form_submit_button(label="Registrar")
 
