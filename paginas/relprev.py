@@ -8,12 +8,14 @@ import streamlit as st
 from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import HttpRequest
-
+from PIL import Image
 #chamada da pagina
 
 def relprev():
 
     # texto sidebar
+    image = Image.open('images/condor guerreiro colorido.png')
+    st.sidebar.image(image)
     st.sidebar.markdown("<h1 style='text-align:center ; color:red; font-size:30px;'><b>ATENÇÃO !<b></h1>",
                         unsafe_allow_html=True)
     st.sidebar.write(

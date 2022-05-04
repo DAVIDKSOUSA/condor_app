@@ -7,21 +7,24 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import HttpRequest
 from streamlit_option_menu import option_menu
-
+from PIL import Image
 def faltas():
     # texto sidebar
     SPREADSHEET_ID = '1Q9A-rSoxYxNRL4smyyaFnNWlRX9Mvp3RmxEhHiipEd8'
     GSHEET_URL = f"https://docs.google.com/spreadsheets/d/{SPREADSHEET_ID}"
+
+    image = Image.open('images/condor guerreiro colorido.png')
+    st.sidebar.image(image)
     st.sidebar.write(
-        f"Esta página é permitida somente para o efetivo da Seção de Apoio do 1/2GT, somente usuários com e-mail \n"
-        f"cadastrados podem modificar a [Planilha de Retirada de Faltas]({GSHEET_URL})."
+        f"Esta página é permitida somente para o efetivo da Seção de Apoio do 1/2GT."
+
     )
-    st.sidebar.write(
-        "Caso haja demandas procure algum militar do Apoio.\n"
-    )
-    st.sidebar.write(
-        "Att, Ten David"
-    )
+    # st.sidebar.write(
+    #     "Caso haja demandas procure algum militar do Apoio.\n"
+    # )
+    # st.sidebar.write(
+    #     "Att, Ten David"
+    # )
 
     pagina = option_menu(
         menu_title="Retirada de Faltas",

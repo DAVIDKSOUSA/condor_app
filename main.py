@@ -9,6 +9,7 @@ import paginas.relprev as rp
 import paginas.faltas as ft
 import paginas.indisp as id
 import paginas.documentos as dc
+import paginas.horas as hr
 
 st.set_page_config(page_title="Aplicativo Esquadrão Condor",
                    page_icon='🛩',
@@ -30,8 +31,8 @@ st.markdown(hide_menu_style, unsafe_allow_html=True)
 
 #pagina com navegation bar
 pagina = option_menu(
-        "ESQUADRÃO CONDOR", ["Avisos", 'Relprev', 'QTS', 'Formulários', 'Faltas', 'Documentos'],
-        icons=['pin', 'cast', 'table', 'list-task', 'person-check', 'cloud-download', ],
+        "ESQUADRÃO CONDOR", ["Avisos", 'Relprev', 'QTS', 'Formulários', 'Faltas', 'Documentos', 'Horas'],
+        icons=['pin', 'cast', 'table', 'list-task', 'person-check', 'cloud-download', 'bar-chart-fill'],
     menu_icon="house",
     default_index=0,
     orientation='horizontal'
@@ -55,6 +56,9 @@ if pagina == 'Formulários':
 
 if pagina == 'Documentos':
     dc.documentos()
+
+if pagina == 'Horas':
+    hr.horas()
 
 
 

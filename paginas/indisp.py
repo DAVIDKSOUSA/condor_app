@@ -9,6 +9,8 @@ from google.oauth2 import service_account
 from googleapiclient.discovery import build
 from googleapiclient.http import HttpRequest
 from streamlit_option_menu import option_menu
+from PIL import Image
+
 #chamada da pagina
 
 def indisp():
@@ -22,6 +24,9 @@ def indisp():
     )
 
 #sidebar
+
+    image = Image.open('images/condor guerreiro colorido.png')
+    st.sidebar.image(image)
     st.sidebar.markdown(
         "<h3 style='text-align: center; color:grey; font-size:30px;'><b>ORIENTAÇÕES<b></h3>",
         unsafe_allow_html=True)
