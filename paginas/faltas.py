@@ -28,11 +28,154 @@ def faltas():
 
     pagina = option_menu(
         menu_title="Retirada de Faltas",
-        options=['Oficiais', 'Graduados', 'Praças', ],
+        options=['Manobra','Oficiais', 'Graduados', 'Praças', ],
         menu_icon='person',
         default_index=0,
         orientation='vertical'
     )
+
+    if pagina == 'Manobra':
+
+        def check_password():
+            """Returns `True` if the user had a correct password."""
+
+            def password_entered():
+                """Checks whether a password entered by the user is correct."""
+                if (
+                        st.session_state["username"] in st.secrets["passwords"]
+                        and st.session_state["password"]
+                        == st.secrets["passwords"][st.session_state["username"]]
+                ):
+                    st.session_state["password_correct"] = True
+                    del st.session_state["password"]  # don't store username + password
+                    del st.session_state["username"]
+                else:
+                    st.session_state["password_correct"] = False
+
+            if "password_correct" not in st.session_state:
+                # First run, show inputs for username + password.
+                st.text_input("Usuário:", on_change=password_entered, key="username")
+                st.text_input(
+                    "Senha:", type="password", on_change=password_entered, key="password"
+                )
+                return False
+            elif not st.session_state["password_correct"]:
+                # Password not correct, show input + error.
+                st.text_input("Username", on_change=password_entered, key="username")
+                st.text_input(
+                    "Password", type="password", on_change=password_entered, key="password"
+                )
+                st.error("😕 Usuário ou senha incorreto")
+                return False
+            else:
+                # Password correct.
+                return True
+
+        if check_password():
+
+            SCOPE = "https://www.googleapis.com/auth/spreadsheets"
+            SPREADSHEET_ID = '1Q9A-rSoxYxNRL4smyyaFnNWlRX9Mvp3RmxEhHiipEd8'
+            SHEET_NAME = "manobra"
+            GSHEET_URL = f"https://docs.google.com/spreadsheets/d/{SPREADSHEET_ID}"
+
+            @st.experimental_singleton(suppress_st_warning=True)
+            def connect_to_gsheet():
+                # Create a connection object.
+                credentials = service_account.Credentials.from_service_account_info(
+                    st.secrets["gcp_service_account"],
+                    scopes=[SCOPE],
+                )
+
+                # Create a new Http() object for every request
+                def build_request(http, *args, **kwargs):
+                    new_http = google_auth_httplib2.AuthorizedHttp(
+                        credentials, http=httplib2.Http()
+                    )
+                    return HttpRequest(new_http, *args, **kwargs)
+
+                authorized_http = google_auth_httplib2.AuthorizedHttp(
+                    credentials, http=httplib2.Http()
+                )
+                service = build(
+                    "sheets",
+                    "v4",
+                    requestBuilder=build_request,
+                    http=authorized_http,
+                )
+                gsheet_connector = service.spreadsheets()
+                return gsheet_connector
+
+            def get_data(gsheet_connector) -> pd.DataFrame:
+                values = (
+                    gsheet_connector.values()
+                        .get(
+                        spreadsheetId=SPREADSHEET_ID,
+                        range=f"{SHEET_NAME}!A:E",
+                    )
+                        .execute()
+                )
+
+                df = pd.DataFrame(values["values"])
+                df.columns = df.iloc[0]
+                df = df[1:]
+                return df
+
+            def add_row_to_gsheet(gsheet_connector, row) -> None:
+                gsheet_connector.values().append(
+                    spreadsheetId=SPREADSHEET_ID,
+                    range=f"{SHEET_NAME}!A:E",
+                    body=dict(values=row),
+                    valueInputOption="USER_ENTERED",
+                ).execute()
+
+            # st.set_page_config(page_title="Bug report", page_icon="🐞", layout="centered")
+            st.title("MANOBRA")
+
+            gsheet_connector = connect_to_gsheet()
+
+            form = st.form(key="annotation")
+
+            with form:
+                # cols = st.columns((1, 1))
+                # author = cols[0].text_input("Ten David")
+                cols = st.columns(3)
+                nome = cols[0].selectbox('Nome',
+                                         ['', 'TC DAVIDSON', 'MJ ROELES', 'CP RAFAEL',
+                                          'CP RICARDO', 'CAP ANGELO', 'CP FREITAS',
+                                          'CP FIALHO', 'CP ALENCAR', 'CP ARON', 'TEN DAVID', 'TEN FILGUEIRAS', 'TEN ANCHIETA',
+                                          'TEN LUIZ CLÁUDIO', 'TEN GABRIEL', 'TEN MOURA', 'TEN RENATO COSTA',
+                                          '1S COSTA', '1S MEIRELES', '1S PESSANHA', '1S DIEGO', '2S AZEVEDO', '2S MATHIAS',
+                                          '2S NATANIEL', '2S CANUTO', '3S ALONSO', '2S SZANTOS', '2S ELTON', '2S J SILVA', '3S DARIEL',
+                                          '2S ALYSSON', '2S WILLIAN', '2S SAVIO', '3S CARVALHO', '3S AVALONE', '3S NATHAN',
+                                          'S2 DANIEL ARAUJO', 'S2 ARANHA', 'S2 LUAN'
+                                          ])
+
+                motivo = cols[1].radio(
+                    "Motivo:", ["Presente", "Voo", "Sobreaviso", "Dispensado", "Férias", "Atrasado", "Outro"], index=0
+                )
+                date = cols[2].date_input("Data")
+                time = cols[2].radio(
+                    "Horário:", ["Dia", "Tarde", "Noite"], index=0)
+                comment = st.text_area("Comentários")
+                submitted = st.form_submit_button(label="Registrar")
+
+            if submitted:
+                add_row_to_gsheet(
+                    gsheet_connector,
+                    [[str(nome), str(motivo), str(date), str(time), str(comment)]],
+                )
+                st.success("Registro realizado.")
+                st.balloons()
+
+            expander = st.expander("Registros")
+            with expander:
+                st.write(f"Abrir planilha no [Google Sheet]({GSHEET_URL})")
+                st.dataframe(get_data(gsheet_connector))
+
+
+
+
+
     if pagina == 'Oficiais':
 
         def check_password():
