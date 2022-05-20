@@ -8,17 +8,21 @@ from googleapiclient.discovery import build
 from googleapiclient.http import HttpRequest
 from streamlit_option_menu import option_menu
 from PIL import Image
+
 def faltas():
     # texto sidebar
     SPREADSHEET_ID = '1Q9A-rSoxYxNRL4smyyaFnNWlRX9Mvp3RmxEhHiipEd8'
     GSHEET_URL = f"https://docs.google.com/spreadsheets/d/{SPREADSHEET_ID}"
 
-    image = Image.open('images/condor guerreiro colorido.png')
-    st.sidebar.image(image)
-    st.sidebar.write(
-        f"Esta página é permitida somente para o efetivo da Seção de Apoio do 1/2GT."
 
-    )
+    #sidebar com imagem do Esquadrão
+    # image = Image.open('images/condor guerreiro colorido.png')
+    # st.sidebar.image(image)
+    # st.sidebar.write(
+    #     f"Esta página é permitida somente para o efetivo da Seção de Apoio do 1/2GT."
+    #
+    # )
+
     # st.sidebar.write(
     #     "Caso haja demandas procure algum militar do Apoio.\n"
     # )
@@ -133,48 +137,40 @@ def faltas():
 
             gsheet_connector = connect_to_gsheet()
 
-            form = st.form(key="annotation")
-
-            with form:
-                # cols = st.columns((1, 1))
-                # author = cols[0].text_input("Ten David")
-                cols = st.columns(3)
-                nome = cols[0].selectbox('Nome',
-                                         ['', 'TC DAVIDSON', 'MJ ROELES', 'CP RAFAEL',
+            efetivo = ['TC DAVIDSON', 'MJ ROELES', 'CP RAFAEL',
                                           'CP RICARDO', 'CAP ANGELO', 'CP FREITAS',
                                           'CP FIALHO', 'CP ALENCAR', 'CP ARON', 'TEN DAVID', 'TEN FILGUEIRAS', 'TEN ANCHIETA',
                                           'TEN LUIZ CLÁUDIO', 'TEN GABRIEL', 'TEN MOURA', 'TEN RENATO COSTA',
                                           '1S COSTA', '1S MEIRELES', '1S PESSANHA', '1S DIEGO', '2S AZEVEDO', '2S MATHIAS',
                                           '2S NATANIEL', '2S CANUTO', '3S ALONSO', '2S SZANTOS', '2S ELTON', '2S J SILVA', '3S DARIEL',
                                           '2S ALYSSON', '2S WILLIAN', '2S SAVIO', '3S CARVALHO', '3S AVALONE', '3S NATHAN',
-                                          'S2 DANIEL ARAUJO', 'S2 ARANHA', 'S2 LUAN'
-                                          ])
+                                          'S2 DANIEL ARAUJO', 'S2 ARANHA', 'S2 LUAN']
+            form = st.form(key="annotation")
+            for i in efetivo:
+                with form:
+                    cols = st.columns(3)
+                    nome = cols[0].selectbox('Nome', options=[i])
+                    motivo = cols[1].radio(
+                        "Motivo:", ["Presente", "Voo", "Sobreaviso", "Dispensado", "Férias", "Atrasado", "Outro"],
+                        index=0, key=i
+                    )
+                    date = cols[2].date_input("Data", key=i)
+                    time = cols[2].radio(
+                        "Horário:", ["Dia", "Tarde", "Noite"], index=0, key=i)
+                    comment = st.text_area("Comentários", key=i)
+                    submitted = st.form_submit_button(label='REGISTRAR\n'+i)
 
-                motivo = cols[1].radio(
-                    "Motivo:", ["Presente", "Voo", "Sobreaviso", "Dispensado", "Férias", "Atrasado", "Outro"], index=0
-                )
-                date = cols[2].date_input("Data")
-                time = cols[2].radio(
-                    "Horário:", ["Dia", "Tarde", "Noite"], index=0)
-                comment = st.text_area("Comentários")
-                submitted = st.form_submit_button(label="Registrar")
-
-            if submitted:
-                add_row_to_gsheet(
-                    gsheet_connector,
-                    [[str(nome), str(motivo), str(date), str(time), str(comment)]],
-                )
-                st.success("Registro realizado.")
-                st.balloons()
-
-            expander = st.expander("Registros")
+                if submitted:
+                    add_row_to_gsheet(
+                        gsheet_connector,
+                        [[str(nome), str(motivo), str(date), str(time), str(comment)]],
+                    )
+                    st.success("Registro realizado.")
+                    st.balloons()
+                expander = st.expander("Registros")
             with expander:
                 st.write(f"Abrir planilha no [Google Sheet]({GSHEET_URL})")
                 st.dataframe(get_data(gsheet_connector))
-
-
-
-
 
     if pagina == 'Oficiais':
 
