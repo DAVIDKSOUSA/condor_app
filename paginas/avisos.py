@@ -41,22 +41,22 @@ def avisos():
                     unsafe_allow_html=True)
 
     p_title('AVISOS:')
-    st.text('')
-    st.write(' - Reunião/Prestação de Contas de Fiscais de Contrato e CONREC - 12/05/22 às 13h30.'
-             )
-
-    image = Image.open('qts/IMG_4341.jpg')
-    st.image(image)
-
-    with open("qts/IMG_4341.jpg", "rb") as pdf_file:
-        PDFbyte = pdf_file.read()
-
-    st.download_button(label='Baixar Documento',
-                       data=PDFbyte,
-                       file_name="IMG_4341.jpg",
-                       mime='application/octet-stream')
-
-    st.write('---')
+    # st.text('')
+    # st.write(' - Reunião/Prestação de Contas de Fiscais de Contrato e CONREC - 12/05/22 às 13h30.'
+    #          )
+    #
+    # image = Image.open('qts/IMG_4341.jpg')
+    # st.image(image)
+    #
+    # with open("qts/IMG_4341.jpg", "rb") as pdf_file:
+    #     PDFbyte = pdf_file.read()
+    #
+    # st.download_button(label='Baixar Documento',
+    #                    data=PDFbyte,
+    #                    file_name="IMG_4341.jpg",
+    #                    mime='application/octet-stream')
+    #
+    # st.write('---')
 
     #st.text('')
     #st.markdown("<h1 style='text-align: center; color:grey; font-size:23px;'><b>Faça uma análise completa da sua "
