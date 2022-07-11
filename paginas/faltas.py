@@ -140,7 +140,7 @@ def faltas():
             form = st.form(key="annotation")
 
             efetivo = ['TC DAVIDSON', 'MJ ROELES', 'CP DALLA CORTE', 'CP RAFAEL', 'CP ROBERTHA',
-                        'CP THAIS LEMGRUBER', 'CP MOREIRA', 'CP RICARDO', 'CP RODNEI', 'CP BLUMER',
+                        'CP MOREIRA', 'CP RICARDO', 'CP BLUMER',
                         'CP FIALHO', 'CP ALENCAR', 'TEN DAVID', 'TEN FILGUEIRAS', 'TEN ANCHIETA',
                         'TEN LUIZ CLÁUDIO', 'TEN GABRIEL', 'TEN MOURA']
 
@@ -410,8 +410,8 @@ def faltas():
             form = st.form(key="annotation")
 
 
-            efetivo = ['S1 LUCENA', 'S1 R. VASCONCELOS', 'S1 A. CARVALHO', 'S1 SILVA MOURA', 'S1 L. SIQUEIRA',
-                       'S2 A. ROCHA', 'S2 VALENTINO', 'S2 ARANHA', 'S2 LUAN SOARES']
+            efetivo = [ 'S1 L. SIQUEIRA', 'S1 SILVA MOURA',
+                       'S2 VALENTINO', 'S2 ARANHA', 'S2 LUAN SOARES', 'S2 SILVA BARBOSA', 'S2 LEVI GOMES', 'S2 COSTA VITOR']
 
         for i in efetivo:
             with form:
